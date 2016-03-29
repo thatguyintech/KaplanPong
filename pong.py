@@ -27,7 +27,8 @@ black = [0, 0, 0]
 
 #the game's variables
 #SECTION 1 - YOUR CODE HERE FOR CREATING VARIABLES AND FUNCTIONS
-
+player_paddle = pygame.Rect([10,10,10,50])
+player_color = [255, 255, 255]
 
 running = True
 #game loop
@@ -37,11 +38,15 @@ while running:
             running = False
 
         if event.type == pygame.MOUSEMOTION:
-            print "mouse moved"
+            print
             #SECTION 2 - YOUR CODE HERE FOR WHEN THE MOUSE IS MOVED
-
+    
+        pressed = pygame.key.get_pressed()
         if event.type == pygame.KEYDOWN:
-            print "key pressed"
+            if pressed[pygame.K_UP]:
+                player_paddle.move_ip(0,-10) 
+            if pressed[pygame.K_DOWN]:
+                player_paddle.move_ip(0,10)
             #SECTION 3 - YOUR CODE HERE FOR WHEN A KEY IS PRESSED
 
     #pause for 20 milliseconds
@@ -51,6 +56,7 @@ while running:
 
     #logic for moving everything in the game and checking collisions
     #SECTION 4 - YOUR CODE HERE FOR CHANGING VARIABLES AND CHECKING FOR COLLISIONS
+    pygame.draw.rect(screen, player_color, player_paddle)
     
     #draw everything on the screen
     #SECTION 5 - YOUR CODE HERE FOR DRAWING EVERYTHING
